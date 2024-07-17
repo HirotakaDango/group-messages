@@ -3,7 +3,7 @@ session_start();
 $db = new PDO('sqlite:messaging.db');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $db->exec("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, username TEXT)");
-$db->exec("CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, message TEXT NOT NULL, date DATETIME)");
+$db->exec("CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, message TEXT NOT NULL, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
 
 $error_message = '';
 
@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
       $_SESSION['user_id'] = $user['id'];
       $_SESSION['email'] = $user['email'];
       $_SESSION['username'] = $user['username'];
-      header('Location: index.php');
+      header('Location: /');
       exit;
     } else {
       $error_message = 'Invalid email or password';
@@ -53,7 +53,7 @@ if (isset($_POST['login'])) {
       $_SESSION['user_id'] = $db->lastInsertId();
       $_SESSION['email'] = $email;
       $_SESSION['username'] = $username;
-      header('Location: index.php');
+      header('Location: /');
       exit;
     }
   }
