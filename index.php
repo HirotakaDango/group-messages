@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+  header('Location: session.php');
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
   <head>
