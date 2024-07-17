@@ -5,7 +5,7 @@ $db = new SQLite3('messaging.db');
 $result = $db->query("SELECT messages.id, messages.email, messages.message, messages.date, users.username 
                       FROM messages 
                       JOIN users ON messages.email = users.email 
-                      ORDER BY messages.date DESC");
+                      ORDER BY messages.date DESC LIMIT 200");
 
 $messages = [];
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
