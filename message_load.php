@@ -29,7 +29,7 @@ while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
         </div>
       <?php endif; ?>
     </div>
-    <strong><?= htmlspecialchars($message['username']) ?></strong><br>
+    <strong>@<?= $message['username'] ?></strong><br>
     <?php
       if (!function_exists('getYouTubeVideoId')) {
         function getYouTubeVideoId($urlCommentThread)
