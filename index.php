@@ -28,18 +28,26 @@
         height: 90vh; /* Set height to 80% of viewport height by default */
         border: none;
       }
+      
+      .rounded-md-4 {
+        border-radius: 1.5em;
+      }
 
       /* Media query for screens up to 767px width */
       @media (max-width: 767px) {
         .iframe-container iframe {
           height: 100%; /* Set height to 100% of viewport height on smaller screens */
         }
+        
+        .rounded-md-4 {
+          border-radius: 0;
+        }
       }
     </style>
   </head>
   <body>
     <div class="iframe-container">
-      <iframe class="rounded-4 shadow" src="message.php"></iframe>
+      <iframe class="rounded-md-4 shadow" src="message.php"></iframe>
     </div>
   </body>
 </html>
