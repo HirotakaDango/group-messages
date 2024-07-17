@@ -2,8 +2,19 @@
 session_start();
 $db = new PDO('sqlite:messaging.db');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$db->exec("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, username TEXT)");
-$db->exec("CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, message TEXT NOT NULL, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
+$db->exec("CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT UNIQUE,
+    username TEXT,
+    password TEXT
+)");
+
+$db->exec("CREATE TABLE IF NOT EXISTS messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT,
+    message TEXT,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP
+)");
 
 $error_message = '';
 
